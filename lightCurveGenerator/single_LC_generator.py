@@ -506,12 +506,14 @@ rad = 0.2
 edgy = 0.05
 a = get_random_points(n=5, scale=1)*85
 x,y, _ = get_bezier_curve(a,rad=rad, edgy=edgy)
+x = x - np.mean(x)
+y = y - np.mean(y)
 z = np.zeros(len(x))
 coord_bezier = np.stack((x, y,z), axis=1)
 ## End of Bezier shape generation
 
 #coord_triangle = np.array([(0,40,0),(40,0,0),(-40,0,0),(-32,-23,0),(-60,70,0)])
-meg_2d = Megastructure(Rorb=200, iscircle = False, Rcircle = 40, isrot=True, Plcoords=coord_bezier,incl=0, ph_offset=0, elevation=-25, ecc=0, per_off=0)
+meg_2d = Megastructure(Rorb=200, iscircle = False, Rcircle = 40, isrot=True, Plcoords=coord_bezier,incl=0, ph_offset=0, elevation=0, ecc=0, per_off=0)
 
 sim1.add_megs(meg_2d)
 #sim1.add_megs(meg_2d_2)
