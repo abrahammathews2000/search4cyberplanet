@@ -9,9 +9,10 @@ from bezier import get_random_points,get_bezier_curve
 from transitCurveGenerator import Megastructure,Simulator,Transit_Animate
 import pandas as pd
 import os
+
 if not os.path.exists('./generatedData/'):
     os.mkdir('./generatedData/')
-print("File name rad_edgy_noEdges_variety")
+#print("File name rad_edgy_noEdges_variety")
 def generate_lc_dict(rad,edgy,noEdges,noVariety):
     if not os.path.exists('./generatedData/'):
         os.mkdir('./generatedData/')
@@ -76,10 +77,10 @@ def generate_lc_dict(rad,edgy,noEdges,noVariety):
       # To save memory for next iteration
 
 #vv Comment below section to use this file for importing to other files
-rad_array = 0.2 #[0.2] #,0.3]
-edgy_array = 0.5 # [0.05] #,0.07]
-edges = 5 # [5] #,9]
-variety = 2
+# rad_array = 0.2 #[0.2] #,0.3]
+# edgy_array = 0.5 # [0.05] #,0.07]
+# edges = 5 # [5] #,9]
+# variety = 2
 # for typeShape in range(len(rad_list)):
 #   Obsolete  generate_lc_dict(rad = rad_list[typeShape],edgy = edgy_list[typeShape],noEdges = noEdges_list[typeShape], descpType = typeShape,noVariety = 1)
 #^^
