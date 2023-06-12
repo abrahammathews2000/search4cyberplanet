@@ -4,7 +4,7 @@ from numpy import asarray
 
 # load the image
 
-image = Image.open('/home/abraham/Documents/IIST_Academics/Astro_2ndYear/Alien_Megastructure/My_code_2023/1edit_Code_here/search4cyberplanet/lightCurveGenerator/generatedData/0.1_0.3_4_0shape.jpg')
+image = Image.open('./generatedData/shape/1_0shape.jpg')
 
 # convert image to numpy array
 
