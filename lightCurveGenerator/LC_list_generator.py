@@ -14,10 +14,13 @@ import cv2
 # if not os.path.exists('./generatedData/'):
 #     os.mkdir('./generatedData/')
 #print("File name rad_edgy_noEdges_variety")
-def generate_lc_dict(rad,edgy,noEdges,noVariety):
+def generate_lc_dict(rad,edgy,noEdges,noVariety,name):
     if not os.path.exists('./generatedData/'):
         os.mkdir('./generatedData/')
-
+    if not os.path.exists('./generatedData/shape/'):
+        os.mkdir('./generatedData/shape/')
+    if not os.path.exists('./generatedData/lc/'):
+        os.mkdir('./generatedData/lc/')
     # Initialize the simulator
     sim1 = Simulator(100, 7000, 500, np.pi/3) # Put frame length np.pi to get full transit curve
 
@@ -41,15 +44,16 @@ def generate_lc_dict(rad,edgy,noEdges,noVariety):
         plt.axis('off') # To remove frame box
         #data = np.random.randint(256, size=(100, 100), dtype=np.uint8)
         #img = Image.fromarray(data)
-        plt.savefig("./generatedData/" + str(rad)+"_"+str(edgy)+"_"+str(noEdges)+"_"+str(i) +"shape.jpg")
+        #plt.savefig("./generatedData/" + str(rad)+"_"+str(edgy)+"_"+str(noEdges)+"_"+str(i) +"shape.jpg")
+        plt.savefig("./generatedData/shape/" + str(name) + "_" + str(i) + "shape.jpg")
         plt.close()
         plt.clf()
         # Convert RGB to grayscale
 
-        image2cnvt = cv2.imread("./generatedData/" + str(rad)+"_"+str(edgy)+"_"+str(noEdges)+"_"+str(i) + "shape.jpg")
+        image2cnvt = cv2.imread("./generatedData/shape/" + str(name) + "_" + str(i) + "shape.jpg")
         #cv2.imshow('Original', image)
         gray_cnvtd = cv2.cvtColor(image2cnvt, cv2.COLOR_BGR2GRAY)
-        cv2.imwrite("./generatedData/" + str(rad)+"_"+str(edgy)+"_"+str(noEdges)+"_"+str(i) + "shape.jpg", gray_cnvtd)
+        cv2.imwrite("./generatedData/shape/" + str(name) + "_" + str(i) + "shape.jpg", gray_cnvtd)
 
         ## End of Bezier shape generation
 
@@ -67,8 +71,8 @@ def generate_lc_dict(rad,edgy,noEdges,noVariety):
         ##^^
         plt.figure(figsize=(8, 8))
         plt.plot(np.array(sim1.frames),lc_array,color="black")
-        np.savetxt("./generatedData/" + str(rad)+"_"+str(edgy)+"_"+str(noEdges)+"_"+str(i) + 'lc.csv', lc_array, delimiter=',')
-        plt.savefig("./generatedData/" + str(rad)+"_"+str(edgy)+"_"+str(noEdges)+"_"+str(i) +"lc.jpg")
+        np.savetxt("./generatedData/lc/" + str(name)  +"_"+str(i) + 'lc.csv', lc_array, delimiter=',')
+        plt.savefig("./generatedData/lc/" + str(name) +"_"+str(i) +"lc.jpg")
         #print(sim1.frames)
         #print(sim1.lc)
         plt.close()
