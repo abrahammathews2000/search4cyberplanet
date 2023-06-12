@@ -8,3 +8,5 @@
 >bezier.py - This contains functions called by other python programs to generate bezier shapes
 
 >LC_list_generator.py - This function creates a folder generatedData and contains the function generate_lc_dict(rad,edgy,noEdges,noVariety). Saves the bezier shape as jpg and  corresponding light curve as an array
+
+>LC_list_generator_2.py - Run this file to save the bezier shapes and its corresponding light curve. This file calls the function generate_lc_dict from LC_list_generator.py. This code can be used to test any changes made in LC_list_generator.py
