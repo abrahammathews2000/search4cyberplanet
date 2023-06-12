@@ -41,15 +41,15 @@ def generate_lc_dict(rad,edgy,noEdges,noVariety):
         plt.axis('off') # To remove frame box
         #data = np.random.randint(256, size=(100, 100), dtype=np.uint8)
         #img = Image.fromarray(data)
-        plt.savefig("./generatedData/" + str(rad)+"_"+str(edgy)+"_"+str(noEdges)+"_"+str(i) + ".jpg")
+        plt.savefig("./generatedData/" + str(rad)+"_"+str(edgy)+"_"+str(noEdges)+"_"+str(i) +"shape.jpg")
         plt.close()
         plt.clf()
         # Convert RGB to grayscale
 
-        image2cnvt = cv2.imread("./generatedData/" + str(rad)+"_"+str(edgy)+"_"+str(noEdges)+"_"+str(i) + ".jpg")
+        image2cnvt = cv2.imread("./generatedData/" + str(rad)+"_"+str(edgy)+"_"+str(noEdges)+"_"+str(i) + "shape.jpg")
         #cv2.imshow('Original', image)
         gray_cnvtd = cv2.cvtColor(image2cnvt, cv2.COLOR_BGR2GRAY)
-        cv2.imwrite("./generatedData/" + str(rad)+"_"+str(edgy)+"_"+str(noEdges)+"_"+str(i) + ".jpg", gray_cnvtd)
+        cv2.imwrite("./generatedData/" + str(rad)+"_"+str(edgy)+"_"+str(noEdges)+"_"+str(i) + "shape.jpg", gray_cnvtd)
 
         ## End of Bezier shape generation
 
@@ -73,6 +73,7 @@ def generate_lc_dict(rad,edgy,noEdges,noVariety):
         #print(sim1.lc)
         plt.close()
     #plt.show()
+    #To save the x-axis of light curve (phase)
     np.savetxt("./generatedData/" + 'phase.csv', np.array(sim1.frames), delimiter=',')
     print("Completed", " - ", str(rad),"_",str(edgy),"_",str(noEdges),"_",str(i))
 

@@ -27,4 +27,4 @@ for j in edgy_array:
     for k in edges:
         generate_lc_dict(rad=1,edgy=j,noEdges=k,noVariety=variety)
 '''
-generate_lc_dict(rad=0.01,edgy=0,noEdges=6,noVariety=2)
+generate_lc_dict(rad=0.1,edgy=0.3,noEdges=3,noVariety=1)
