@@ -40,8 +40,9 @@ print('lc_dict = ',lc_dict_read)
 #os.chdir(shape_dir)
 i = 0
 for shape_element in shape_filenames:
-    shape_dict[i] = np.array(iio.imread(shape_dir+shape_element)) #/255.0
+    shape_dict[i] = np.array(iio.imread(shape_dir+shape_element))
     i = i + 1
+shape_dict = np.where(shape_dict > (0.2*255.0), 255.0, 0)
 
 np.save('./generatedData/shape_dict.npy', shape_dict)
 shape_dict_read = np.load('./generatedData/shape_dict.npy')
