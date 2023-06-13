@@ -21,6 +21,10 @@ def generate_lc_dict(rad,edgy,noEdges,noVariety,name):
         os.mkdir('./generatedData/shape/')
     if not os.path.exists('./generatedData/lc/'):
         os.mkdir('./generatedData/lc/')
+    # if not os.path.exists('./generatedData/lc/jpg/'):
+    #     os.mkdir('./generatedData/lc/jpg/')
+    if not os.path.exists('./generatedData/lc/array/'):
+        os.mkdir('./generatedData/lc/array/')
     # Initialize the simulator
     sim1 = Simulator(100, 7000, 500, np.pi/3) # Put frame length np.pi to get full transit curve
 
@@ -45,15 +49,15 @@ def generate_lc_dict(rad,edgy,noEdges,noVariety,name):
         #data = np.random.randint(256, size=(100, 100), dtype=np.uint8)
         #img = Image.fromarray(data)
         #plt.savefig("./generatedData/" + str(rad)+"_"+str(edgy)+"_"+str(noEdges)+"_"+str(i) +"shape.jpg")
-        plt.savefig("./generatedData/shape/" + str(name) + "_" + str(i) + "shape.jpg")
+        plt.savefig("./generatedData/shape/shape0" + str(name) + "_" + str(i) + ".jpg")
         plt.close()
         plt.clf()
         # Convert RGB to grayscale
 
-        image2cnvt = cv2.imread("./generatedData/shape/" + str(name) + "_" + str(i) + "shape.jpg")
+        image2cnvt = cv2.imread("./generatedData/shape/shape0" + str(name) + "_" + str(i) + ".jpg")
         #cv2.imshow('Original', image)
         gray_cnvtd = cv2.cvtColor(image2cnvt, cv2.COLOR_BGR2GRAY)
-        cv2.imwrite("./generatedData/shape/" + str(name) + "_" + str(i) + "shape.jpg", gray_cnvtd)
+        cv2.imwrite("./generatedData/shape/shape0" + str(name) + "_" + str(i) + ".jpg", gray_cnvtd)
 
         ## End of Bezier shape generation
 
@@ -71,8 +75,8 @@ def generate_lc_dict(rad,edgy,noEdges,noVariety,name):
         ##^^
         plt.figure(figsize=(8, 8))
         plt.plot(np.array(sim1.frames),lc_array,color="black")
-        np.savetxt("./generatedData/lc/" + str(name)  +"_"+str(i) + 'lc.csv', lc_array, delimiter=',')
-        plt.savefig("./generatedData/lc/" + str(name) +"_"+str(i) +"lc.jpg")
+        np.savetxt("./generatedData/lc/array/lc0" + str(name) +"_"+str(i) + ".csv", lc_array, delimiter=',')
+        #plt.savefig("./generatedData/lc/jpg/lc0" + str(name) +"_"+str(i) +".jpg")
         #print(sim1.frames)
         #print(sim1.lc)
         plt.close()
