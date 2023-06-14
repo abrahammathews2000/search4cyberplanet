@@ -14,7 +14,7 @@ import cv2
 # if not os.path.exists('./generatedData/'):
 #     os.mkdir('./generatedData/')
 #print("File name rad_edgy_noEdges_variety")
-def generate_lc_dict(rad,edgy,noEdges,noVariety,name):
+def generate_lc_dict(rad,edgy,noEdges,noVariety,name,Rstar_siml = 100,Rmega_star = 0.5):
     if not os.path.exists('./generatedData/'):
         os.mkdir('./generatedData/')
     if not os.path.exists('./generatedData/shape/'):
@@ -26,15 +26,15 @@ def generate_lc_dict(rad,edgy,noEdges,noVariety,name):
     if not os.path.exists('./generatedData/lc/array/'):
         os.mkdir('./generatedData/lc/array/')
     # Initialize the simulator
-    sim1 = Simulator(100, 7000, 500, np.pi/3) # Put frame length np.pi to get full transit curve
-
+    sim1 = Simulator(Rstar=Rstar_siml, no_pt=7000, frame_no=500, frame_length=np.pi / 3)
+    Rmega = Rmega_star * Rstar_siml
     # Create shape and LC
     for i in range(noVariety):
         ## Bezier shape generation
         plt.clf()
         #rad = 0.2
         #edgy = 0.05
-        a = get_random_points(n=noEdges, scale=1)*85
+        a = get_random_points(n=noEdges, scale=1)*Rmega
         x,y, _ = get_bezier_curve(a,rad=rad, edgy=edgy)
         x = x - np.mean(x)
         y = y - np.mean(y)

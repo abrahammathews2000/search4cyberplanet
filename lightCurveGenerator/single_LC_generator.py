@@ -496,15 +496,16 @@ class Transit_Animate:
         else:
             plt.show()
 
-
-sim1 = Simulator(100, 7000, 500, np.pi/3)
+Rstar_siml = 100
+sim1 = Simulator(Rstar = Rstar_siml, no_pt = 7000,frame_no = 500, frame_length = np.pi/3)
 #meg_2d = Megastructure(Rorb=200, iscircle = True, Rcircle = 50, isrot=True, incl=20*np.pi/180, ph_offset=0, elevation=0, ecc=0, per_off=np.pi/2)
 #meg_2d_2 = Megastructure(Rorb=250, iscircle = True, Rcircle = 40, isrot=True, incl=5*np.pi/180, ph_offset=0.5, elevation=0, ecc=0, per_off=np.pi/2)
 
 ## For start of Bezier
+Rmega = 0.5* Rstar_siml # 100 for 50% of Rstat
 rad = 0.2
 edgy = 0.05
-a = get_random_points(n=5, scale=1)*85
+a = get_random_points(n=5, scale=1)*Rmega*2
 x,y, _ = get_bezier_curve(a,rad=rad, edgy=edgy)
 x = x - np.mean(x)
 y = y - np.mean(y)

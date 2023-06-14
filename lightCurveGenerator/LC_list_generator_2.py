@@ -10,7 +10,28 @@ from transitCurveGenerator import Megastructure,Simulator,Transit_Animate
 import pandas as pd
 import os
 from LC_list_generator import generate_lc_dict
+import time
 
+# ---
+start = time.time()
+# ---
+
+variety = 1
+edgy_array = np.linspace(0,9,3)
+edges = np.array([3,4,5,6,7,8,9,10,11,12])
+# edges = np.array([3,4,5])
+
+name = 1
+for edgy_el in edgy_array:
+    for edges_el in edges:
+        generate_lc_dict(rad=0.2,edgy=edgy_el,noEdges=edges_el,noVariety=variety,name = name,Rstar_siml = 100,Rmega_star = 0.5)
+        name = name + 1
+
+end = time.time()
+print(end - start)
+
+
+# Old code below vv
 # generate_lc_dict(rad = rad_list[typeShape],edgy = edgy_list[typeShape],noEdges = noEdges_list[typeShape], descpType = typeShape,noVariety = 2)
 ''' 
 rad_array = np.linspace(0.,1.,5) #[0.   0.25 0.5  0.75 1.  ] Give it manually
@@ -27,5 +48,5 @@ for j in edgy_array:
     for k in edges:
         generate_lc_dict(rad=1,edgy=j,noEdges=k,noVariety=variety)
 '''
-generate_lc_dict(rad=0.1,edgy=0.3,noEdges=5,noVariety=2,name = 10)
-generate_lc_dict(rad=0.2,edgy=0.4,noEdges=4,noVariety=2,name = 5)
+#generate_lc_dict(rad=0.1,edgy=0.3,noEdges=5,noVariety=2,name = 10,Rstar_siml = 100,Rmega_star = 0.5)
+#generate_lc_dict(rad=0.2,edgy=0.4,noEdges=4,noVariety=2,name = 5,Rstar_siml = 100,Rmega_star = 0.5)
