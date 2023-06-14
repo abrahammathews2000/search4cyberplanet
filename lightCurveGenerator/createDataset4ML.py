@@ -2,6 +2,7 @@ import numpy as np
 import os
 from natsort import natsorted
 import imageio.v3 as iio
+import matplotlib.pyplot as plt
 # import visvis as vv
 #from skimage.io import imread_collection
 
@@ -42,11 +43,12 @@ i = 0
 for shape_element in shape_filenames:
     shape_dict[i] = np.array(iio.imread(shape_dir+shape_element))
     i = i + 1
-shape_dict = np.where(shape_dict > (0.2*255.0), 255.0, 0)
+shape_dict = np.where(shape_dict > (0.15*255.0), 255.0, 0)
 
 np.save('./generatedData/shape_dict.npy', shape_dict)
 shape_dict_read = np.load('./generatedData/shape_dict.npy')
 print('shape_dict = ',shape_dict_read)
+plt.imshow(shape_dict_read[0],cmap='gray')
 # -- Old codes vv
 # # Load output images
 # #your path
