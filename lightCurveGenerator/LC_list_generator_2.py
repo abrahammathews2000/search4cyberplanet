@@ -1,31 +1,61 @@
-import random
+# import random
+# import matplotlib.pyplot as plt
+# import matplotlib.animation as animation
+# from scipy.optimize import root_scalar
+# import copy
+# from gfg import in_or_out
+# from bezier import get_random_points,get_bezier_curve
+# from transitCurveGenerator import Megastructure,Simulator,Transit_Animate
+# import pandas as pd
+# import os
 import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.animation as animation
-from scipy.optimize import root_scalar
-import copy
-from gfg import in_or_out
-from bezier import get_random_points,get_bezier_curve
-from transitCurveGenerator import Megastructure,Simulator,Transit_Animate
-import pandas as pd
-import os
 from LC_list_generator import generate_lc_dict
 import time
-
+import gc
 # ---
 start = time.time()
 # ---
 
-variety = 1
-edgy_array = np.linspace(0,9,3)
-edges = np.array([3,4,5,6,7,8,9,10,11,12])
-# edges = np.array([3,4,5])
+# variety = 2
+# rad_array = np.array([0])
+# edgy_array = np.linspace(0,9,10)
+# edges_array = np.array([11,12])
+#
+# name = 81
+# for rad_el in rad_array:
+#     for edgy_el in edgy_array:
+#         for edges_el in edges_array:
+#             generate_lc_dict(rad=rad_el,edgy=edgy_el,noEdges=edges_el,noVariety=variety,name = name,Rstar_siml = 100,Rmega_star = 0.5)
+#             name = name + 1
+#             # collected = gc.collect()
+#             # print("Garbage collector: collected","%d objects." % collected)
+# 1 .Uncomment below to create multiple shapes
+# ----
+variety = 2
+rad_array = np.array([0.25]) # np.linspace(0.,1.,5)
+edgy_array = np.linspace(0,9,10)
+edges_array = np.array([3,4,5,6,7,8,9,10,11,12])
 
-name = 1
-for edgy_el in edgy_array:
-    for edges_el in edges:
-        generate_lc_dict(rad=0.2,edgy=edgy_el,noEdges=edges_el,noVariety=variety,name = name,Rstar_siml = 100,Rmega_star = 0.5)
-        name = name + 1
+name = 101
+for rad_el in rad_array:
+    for edgy_el in edgy_array:
+        for edges_el in edges_array:
+            generate_lc_dict(rad=rad_el,edgy=edgy_el,noEdges=edges_el,noVariety=variety,name = name,Rstar_siml = 100,Rmega_star = 0.5)
+            name = name + 1
+            # collected = gc.collect()
+            # print("Garbage collector: collected","%d objects." % collected)
+# ----
+
+
+# 2 .Uncomment below to create LC for 1 shape
+# ----
+# variety = 2
+# name = 1
+# generate_lc_dict(rad=0.2,edgy=0.4,noEdges=6,noVariety=2,name = 5,Rstar_siml = 100,Rmega_star = 0.5)
+# name = name + 1
+# collected = gc.collect()
+# print("Garbage collector: collected","%d objects." % collected)
+# ----
 
 end = time.time()
 print(end - start)

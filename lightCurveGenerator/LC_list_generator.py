@@ -15,6 +15,7 @@ import cv2
 #     os.mkdir('./generatedData/')
 #print("File name rad_edgy_noEdges_variety")
 def generate_lc_dict(rad,edgy,noEdges,noVariety,name,Rstar_siml = 100,Rmega_star = 0.5):
+    # Rmega_star = ratio of radius of megastructure to radius of star
     if not os.path.exists('./generatedData/'):
         os.mkdir('./generatedData/')
     if not os.path.exists('./generatedData/shape/'):
@@ -34,10 +35,10 @@ def generate_lc_dict(rad,edgy,noEdges,noVariety,name,Rstar_siml = 100,Rmega_star
         plt.clf()
         #rad = 0.2
         #edgy = 0.05
-        a = get_random_points(n=noEdges, scale=1)*Rmega
+        a = get_random_points(n=noEdges, scale=1)
         x,y, _ = get_bezier_curve(a,rad=rad, edgy=edgy)
-        x = x - np.mean(x)
-        y = y - np.mean(y)
+        x = (x - np.mean(x)) * Rmega * 2
+        y = (y - np.mean(y)) * Rmega * 2
         z = np.zeros(len(x))
         coord_bezier = np.stack((x, y,z), axis=1)
         #np.savetxt("./generatedData/" + str(rad)+"_"+str(edgy)+"_"+str(noEdges)+"_"+str(i) + 'bezierCoord.csv', coord_bezier, delimiter=',')

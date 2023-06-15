@@ -34,6 +34,9 @@ for lc_element in lc_filenames:
 
 np.save('./generatedData/lc_dict.npy', lc_dict)
 lc_dict_read = np.load('./generatedData/lc_dict.npy')
+
+# np.savez_compressed('./generatedData/lc_dict.npz', lc_dict)
+# lc_dict_read = np.load('./generatedData/lc_dict.npz')
 print('lc_dict = ',lc_dict_read)
 # print('lc_dict = ',lc_dict[0][220:250])
 # print('lc_dict = ',lc_dict[2][220:250])
@@ -47,6 +50,10 @@ shape_dict = np.where(shape_dict > (0.15*255.0), 255.0, 0)
 
 np.save('./generatedData/shape_dict.npy', shape_dict)
 shape_dict_read = np.load('./generatedData/shape_dict.npy')
+
+# np.savez_compressed('./generatedData/shape_dict.npz', shape_dict)
+# shape_dict_read = np.load('./generatedData/shape_dict.npz')
+
 print('shape_dict = ',shape_dict_read)
 plt.imshow(shape_dict_read[0],cmap='gray')
 # -- Old codes vv
