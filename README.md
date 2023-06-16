@@ -5,10 +5,10 @@
 
 **Things you can try:**
 
-1. To see the transit lightcurve simulation for a single shape run **single_LC_generator.py**.
+1. To see the transit lightcurve simulation for a single shape, run **single_LC_generator.py**.
 You can specify the shape in the code
 
-2. To generate and save shape(s) and their corresponding lightcurve(s) as jpg and csv files respectively run - **LC_list_generator_2.py**. You can specify the parameter of the shape and simulation in the code
+2. To generate and save shape(s) and their corresponding lightcurve(s) as jpg and csv files respectively, run  **LC_list_generator_2.py**. You can specify the parameter of the shape and simulation in the code
 
 **Description of files in lightCurveGenerator folder**
 
