@@ -1,6 +1,7 @@
+# Code from: https://stackoverflow.com/questions/50731785/create-random-shape-contour-using-matplotlib
+# This file is required for generating bezier curve in other files.
 import numpy as np
 from scipy.special import binom
-import matplotlib.pyplot as plt
 
 
 bernstein = lambda n, k, t: binom(n,k)* t**k * (1.-t)**(n-k)
@@ -84,8 +85,11 @@ def get_random_points(n=5, scale=0.8, mindst=None, rec=0):
 
 
 #-----------------------------------------------------------------------------------
+# Bezier curve demonstration
+# Comment everything below to use the above functions for calling.
+# I was just trying to play around with the above functions
 
-# bezier curve demonstration
+# import matplotlib.pyplot as plt
 
 # a = get_random_points(n=3, scale=0.9) 
 # x,y, _ = get_bezier_curve(a,rad=0.6, edgy=0.05)
