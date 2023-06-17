@@ -13,7 +13,7 @@ start = time.time()
 # ---
 # 1 .To create multiple shapes
 # ----
-rad_array = np.array([0.75])    # rad_array = np.linspace(0.,1.,5)
+rad_array = np.array([1])    # rad_array = np.linspace(0.,1.,5)
                                 # Do to limited RAM size only one element is give
                                 # rad_array for every run
 edgy_array = np.linspace(0,9,10)
@@ -22,11 +22,11 @@ variety = 2
 
 # NOTE: give the name such that it will not overwrite on already saved files
 # name get incremented by 1 for every iteration
-name = 301
+name = 401
 for rad_el in rad_array:
     for edgy_el in edgy_array:
         for edges_el in edges_array:
-            generate_lc_dict(rad=rad_el,edgy=edgy_el,noEdges=edges_el,noVariety=variety,name = name,Rstar_siml = 100,Rmega_star = 0.5)
+            generate_lc_dict(rad=rad_el,edgy=edgy_el,noEdges=edges_el,noVariety=variety,name = name,Rstar_siml = 100,Rmega_star = 0.5, orbit_radius = 200)
             name = name + 1
 # ----
 

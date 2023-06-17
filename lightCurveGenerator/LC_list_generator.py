@@ -87,7 +87,7 @@ def generate_lc_dict(rad,edgy,noEdges,noVariety,name,Rstar_siml = 100,Rmega_star
         #plt.savefig("./generatedData/" + str(rad)+"_"+str(edgy)+"_"+str(noEdges)+"_"+str(i) +"shape.jpg")
         plt.savefig("./generatedData/shape/shape0" + str(name) + "_" + str(i) + ".jpg")
         plt.close()
-        plt.clf()
+        # plt.clf()
 
         # Convert RGB to grayscale
         image2cnvt = cv2.imread("./generatedData/shape/shape0" + str(name) + "_" + str(i) + ".jpg")
@@ -112,10 +112,10 @@ def generate_lc_dict(rad,edgy,noEdges,noVariety,name,Rstar_siml = 100,Rmega_star
         #plt.savefig("./generatedData/lc/jpg/lc0" + str(name) +"_"+str(i) +".jpg")
         #print(sim1.frames)
         #print(sim1.lc)
-        plt.close()
+        # plt.close()
     #plt.show()
     #To save the x-axis of light curve (phase)
-    np.savetxt("./generatedData/" + 'phase.csv', np.array(sim1.frames), delimiter=',')
+    # np.savetxt("./generatedData/" + 'phase.csv', np.array(sim1.frames), delimiter=',')
     print("Completed", " - ", str(rad),"_",str(edgy),"_",str(noEdges),"_",str(i))
 
 
