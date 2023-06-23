@@ -12,7 +12,7 @@ Rstar_siml = 100    # Radius of star (edit this as you require)
 
 # 2. Initialize the simulator
 # Specify simulator parameters
-sampling_pts = 6000         # edit this as you require
+sampling_pts = 50000         # edit this as you require
 no_of_frames = 500          # edit this as you require
 length_of_frames = np.pi/3  # edit this as you require
 
@@ -20,13 +20,15 @@ sim1 = Simulator(Rstar = Rstar_siml, no_pt = sampling_pts,frame_no = no_of_frame
 
 # 3. Specify the parameters to generate megastructure shape
 orbit_radius = 200          # Radius of the orbit of megastructure
-Rmega_star = 0.5            # Radius of megastructure in as fraction of radius of star  (edit this as you require)
-isItCircle = False          # True - generates circle shaped megastructure
+Rmega_star = 0.25            # Radius of megastructure as a fraction of radius of star  (edit this as you require)
+isItCircle = True          # True - generates circle shaped megastructure
                             # False - generates Bezier shaped megastructure
+isItRotate = False          # True - Rotation considered
+                            # False - Rotation not considered
 # Following 3 parameters are for generating Bezier shaped megastructure
 rad = 0.2                   # (edit this as you require)
 edgy = 0.05                 # (edit this as you require)
-no_of_edge = 5              # (edit this as you require)
+no_of_edge = 8              # (edit this as you require)
 
 Rmega = Rmega_star * Rstar_siml # Radius of megastructure (calculated value)
 a = get_random_points(n=no_of_edge, scale=1)
@@ -37,7 +39,7 @@ z = np.zeros(len(x))
 coord_bezier = np.stack((x, y,z), axis=1) # Contains the coordinate of bezier shape
 
 # Initialize the megastructure
-meg_2d = Megastructure(Rorb=orbit_radius, iscircle = isItCircle, Rcircle = Rmega, isrot=True, Plcoords=coord_bezier,incl=0, ph_offset=0, elevation=0, ecc=0, per_off=0)
+meg_2d = Megastructure(Rorb=orbit_radius, iscircle = isItCircle, Rcircle = Rmega, isrot=isItRotate, Plcoords=coord_bezier,incl=0, ph_offset=0, elevation=0, ecc=0, per_off=0)
 sim1.add_megs(meg_2d)
 
 
